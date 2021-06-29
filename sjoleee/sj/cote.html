@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let param0 = ["/a/a_v2.x", "/b/a.x", "/c/t.z", "/d/a/t.x", "/e/z/t_v1.z", "k/k/k/a_v9.x"]
+        let answer = [];
+        let obj = new Map()
+        let param0_clean = [];
+
+        for (let x of param0) {
+            param0_clean.push(x.split("/").reverse()[0][0] + "." + x.split("/").reverse()[0].split("").reverse()[0])
+        }
+        console.log(param0_clean)
+    </script>
+
+</body>
+
+</html>

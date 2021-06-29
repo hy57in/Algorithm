@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = 0;
+        let steps = [
+          [-2, -1],
+          [-2, 1],
+          [-1, -2],
+          [-1, 2],
+          [1, 2],
+          [1, -2],
+          [2, 1],
+          [2, -1],
+        ];
+        let start = [];
+        start[0] = Number(s.charAt(1));
+        start[1] = s.charCodeAt(0) - "a".charCodeAt() + 1;
+
+        for (let i = 0; i < steps.length; i++) {
+          if (start[0] + steps[i][0] > 0 && start[1] + steps[i][1] > 0)
+            answer++;
+        }
+        return answer;
+      }
+      console.log(solution("c3"));
+    </script>
+  </body>
+</html>

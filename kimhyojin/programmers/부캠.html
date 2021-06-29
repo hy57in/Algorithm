@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(param0) {
+        let answer = "";
+        for (let i = 0; i < param0.length; i++) {
+          if (param0[i] === "INT") {
+            answer += param0[i].replace("INT", "########");
+          } else if (param0[i] === "BOOL") {
+            answer += param0[i].replace("BOOL", "#");
+          } else if (param0[i] === "FLOAT") {
+            answer += param0[i].replace("FLOAT", "####");
+          } else if (param0[i] === "SHORT") {
+            answer += param0[i].replace("SHORT", "##");
+          } else if (param0[i] === "LONG") {
+            answer += param0[i].replace("LONG", "################");
+          }
+        }
+
+        answer = answer.replace(/(.{8})/g, "$1,")
+
+        return answer;
+      }
+      console.log(solution(["INT", "INT", "BOOL", "SHORT", "LONG"]));
+    </script>
+  </body>
+</html>

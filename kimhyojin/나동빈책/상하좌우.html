@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, arr) {
+        let answer = [1, 1];
+
+        for (let x of arr) {
+          if (x === "L") {
+            answer[1]--;
+            if (answer[1] === 0) answer[1]++;
+          }
+          if (x === "R") {
+            answer[1]++;
+            if (answer[1] === n + 1) answer[1]--;
+          }
+          if (x === "U") {
+            answer[0]--;
+            if (answer[0] === 0) answer[0]++;
+          }
+          if (x === "D") {
+            answer[0]++;
+            if (answer[0] === n + 1) answer[0]--;
+          }
+        }
+        return answer;
+      }
+      console.log(solution(5, ["R", "R", "L", "R", "L", "U", "D", "D"]));
+    </script>
+  </body>
+</html>

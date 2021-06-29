@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = "";
+        for (let i = 0; i < s.length; i++) {
+          if (s.indexOf(s[i]) === i) answer += s[i];
+        }
+
+        let cnt = 0;
+        let pos = s.indexOf("i");
+        while (pos !== -1) {
+          cnt++;
+          pos = s.indexOf("i", pos + 1);
+        }
+        console.log(cnt);
+
+        return answer;
+      }
+      console.log(solution("hyojinidisfsfd"));
+    </script>
+  </body>
+</html>
+//

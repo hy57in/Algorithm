@@ -20,11 +20,14 @@
             if (obj.has(x) == true) obj.set(x, obj.get(x) + 1);
             else obj.set(x, 1);
         }
+
         for (let y of completion) {
             obj.set(y, obj.get(y) - 1);
             if (obj.get(y) == 0) obj.delete(y);
         }
+
         for (let z of obj.keys()) answer = z;
+
         console.log(answer)
     </script>
 

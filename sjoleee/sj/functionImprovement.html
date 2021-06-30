@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let progresses = [93, 30, 55];
+        let speeds = [10, 50, 10];
+        let answer = [];
+        let arr = [];
+        let cnt = 1;
+
+        while (progresses.length > 0) {
+            for (let i = 0; i < progresses.length; i++) {
+                arr.push(progresses[i] + speeds[i])
+                progresses[i] = arr[i]
+            }
+            if (arr[0] >= 100) {
+                for (let j = 1; j < arr.length; j++) {
+                    if (arr[j] >= 100) cnt += 1;
+                    else break;
+                }
+                for (let m = 0; m < cnt; m++) {
+                    progresses.shift()
+                    speeds.shift()
+                }
+                answer.push(cnt)
+            }
+            cnt = 1
+            arr = []
+            console.log(arr)
+            console.log(answer)
+            console.log(progresses)
+        }
+    </script>
+
+</body>
+
+</html>

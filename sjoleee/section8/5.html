@@ -1,0 +1,43 @@
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+</head>
+
+<body>
+    <script>
+        function solution(arr) {
+            let n = arr.length;
+            let answer = "NO";
+            let obj = {};
+
+            function DFS(v) {
+                if (v == n + 1) {
+                    let a = 0;
+                    let b = 0;
+
+                    for (let i = 1; i <= n; i++) {
+                        if (obj[i] == 1) a += arr[i - 1];
+                        else {
+                            b += arr[i - 1];
+                        }
+                    }
+                    if (tmp_l == tmp_r) answer = "YES";
+                } else {
+                    obj[v] = 1;
+                    DFS(v + 1);
+                    obj[v] = 0;
+                    DFS(v + 1);
+                }
+            }
+            DFS(1);
+            return answer;
+        }
+
+        let arr = [1, 3, 5, 6, 7, 10];
+        console.log(solution(arr));
+    </script>
+</body>
+
+</html>

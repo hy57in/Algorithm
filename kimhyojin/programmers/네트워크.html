@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, computers) {
+        let answer = 0;
+        let check = Array.from({ length: n }, () => false);
+
+        function DFS(v) {
+          check[v] = true;
+          for (let i = 0; i < n; i++) {
+            if (computers[v][i] === 1 && !check[i]) {
+              DFS(i);
+            }
+          }
+        }
+
+        for (let i = 0; i < n; i++) {
+          if (!check[i]) {
+              DFS(i);
+              answer++;
+          }
+        }
+
+        return answer;
+      }
+      arr = [
+        [
+          [1, 1, 0],
+          [1, 1, 1],
+          [0, 1, 1],
+        ],
+      ];
+      console.log(solution(3, arr));
+    </script>
+  </body>
+</html>

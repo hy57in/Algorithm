@@ -17,10 +17,13 @@
 
       function solution(n, arr) {
         let answer = 0;
-        let sum = 0;
         let max = Number.MIN_SAFE_INTEGER;
         for (let x of arr) {
-          sum = sum_digit(String(x));
+          //sum = sum_digit(String(x));
+          let sum = x
+            .toString()
+            .split("")
+            .reduce((a, b) => a + Number(b), 0);
           if (sum > max) {
             max = sum;
             answer = x;

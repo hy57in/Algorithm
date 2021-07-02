@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function solution(c, n, arr) {
+            let tmp2 = [];
+            let obj = {};
+            for (let i = 1; i <= arr.length; i++) {
+                obj[i] = arr[i - 1];
+            }
+            let check = {};
+
+            function DFS(v) {
+                let tmp = 0;
+                if (v == n + 1) {
+                    for (let j = 1; j <= n; j++) {
+                        if (check[j] == 1) tmp += obj[j];
+                    }
+                    if (tmp2.length == 0 && tmp <= c) tmp2.push(tmp);
+                    else if (tmp <= c && tmp > tmp2[0]) {
+                        tmp2.pop();
+                        tmp2.push(tmp);
+                    }
+                    answer = tmp2[0];
+                } else {
+                    check[v] = 1;
+                    DFS(v + 1);
+                    check[v] = 0;
+                    DFS(v + 1);
+                }
+            }
+
+            DFS(1);
+            return answer;
+        }
+        let truck = 259;
+        let number = 5;
+        let array = [81, 58, 42, 33, 61];
+        console.log(solution(truck, number, array));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function soultion(n, m) {
+            let ch = {};
+            let answer = [];
+            let tmp = "";
+
+            function DFS(v) {
+                if (v == m + 1) {
+                    for (let j = 1; j <= m; j++) {
+                        tmp += String(ch[j]);
+                    }
+                    answer.push(tmp);
+                    tmp = "";
+                } else {
+                    for (let i = 1; i <= n; i++) {
+                        ch[v] = i;
+                        DFS(v + 1);
+                    }
+                }
+            }
+            DFS(1);
+            return answer;
+        }
+
+        let number = 3;
+        let times = 2;
+        console.log(soultion(number, times));
+        console.log(soultion(number, times).length);
+    </script>
+</body>
+
+</html>

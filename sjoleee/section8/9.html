@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function solution(n, arr, m) {
+            let ch = {};
+            let obj_coin = {};
+            for (let j = 1; j <= n; j++) {
+                obj_coin[j] = arr[j - 1];
+            }
+            let tmp = 0;
+            let answer = 0;
+
+            function DFS(v) {
+                tmp = 0;
+                for (let k = 1; k < v; k++) {
+                    tmp += obj_coin[ch[k]];
+                }
+                if (tmp > m) return;
+
+                if (tmp == m) {
+                    answer = v - 1;
+                } else {
+                    for (let i = 1; i <= n; i++) {
+                        ch[v] = i;
+                        DFS(v + 1);
+                    }
+                }
+            }
+            DFS(1);
+            return answer;
+        }
+        let number = 3;
+        let coinArr = [1, 2, 5];
+        let price = 15;
+        console.log(solution(number, coinArr, price));
+    </script>
+</body>
+
+</html>

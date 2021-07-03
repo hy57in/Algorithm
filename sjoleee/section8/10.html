@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function soultion(m, arr) {
+            let answer = [];
+            let n = arr.length;
+            let ch = {};
+            let tmp = [];
+            let obj_arr = {};
+            for (let i = 1; i <= n; i++) {
+                obj_arr[i] = arr[i - 1];
+            }
+            for (let k = 1; k <= n; k++) {
+                ch[k] = 0;
+            }
+
+            function DFS(v) {
+                if (v == m + 1) {
+                    answer.push(tmp[1] + String(tmp[2]));
+                } else {
+                    for (let j = 1; j <= n; j++) {
+                        if (ch[j] == 0) {
+                            ch[j] = 1;
+                            tmp[v] = obj_arr[j];
+                            DFS(v + 1);
+                            ch[j] = 0;
+                        }
+                    }
+                }
+            }
+
+            DFS(1);
+            return answer;
+        }
+
+        let array = [3, 6, 9];
+        console.log(soultion(2, array));
+    </script>
+</body>
+
+</html>

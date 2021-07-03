@@ -1,54 +1,99 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>출력결과</title>
 </head>
 
 <body>
     <script>
-        function solution(m, product) {
+        // function solution(m, product) {
 
-            let sum = [];
-            for (let i = 0; i < arr.length; i++) {
-                sum[i] = arr[i][0] + arr[i][1]
-            }
-            sum.sort(function(a, b) {
-                return a - b;
+        //     let sum = [];
+        //     for (let i = 0; i < arr.length; i++) {
+        //         sum[i] = arr[i][0] + arr[i][1]
+        //     }
+        //     sum.sort(function(a, b) {
+        //         return a - b;
+        //     });
+        //     let cnt = 0;
+        //     for (let n = 0; n < sum.length; n++) {
+        //         if (m - sum[n] <= 0) {
+        //             break;
+        //         }
+        //         m -= sum[n];
+        //         cnt += 1
+        //     }
+        //     let half_sum = [];
+        //     for (let i = 0; i < arr.length; i++) {
+        //         half_sum[i] = arr[i][0] / 2 + arr[i][1]
+        //     }
+        //     half_sum.sort(function(a, b) {
+        //         return a - b;
+        //     });
+        //     let half_cnt = 0;
+        //     for (let p = 0; p < half_sum.length; p++) {
+        //         if (m - half_sum[p] <= 0) {
+        //             break;
+        //         }
+        //         m -= sum[p];
+        //         half_cnt += 1
+        //     }
+        //     answer = cnt + half_cnt;
+        //     return answer;
+        // }
+        function solution(m, product) {
+            let answer = 0;
+            let n = product.length;
+
+            product.sort(function([a, b], [c, d]) {
+                return a + b - (c + d);
             });
+
+            let tot_price = [];
+            for (let x of product) {
+                tot_price.push(x[0] + x[1]);
+            }
+
             let cnt = 0;
-            for (let n = 0; n < sum.length; n++) {
-                if (m - sum[n] <= 0) {
+
+            for (let y of tot_price) {
+                m -= y;
+                cnt++;
+                if (m < 0) {
+                    m += y;
+                    cnt -= 1;
                     break;
                 }
-                m -= sum[n];
-                cnt += 1
             }
-            let half_sum = [];
-            for (let i = 0; i < arr.length; i++) {
-                half_sum[i] = arr[i][0] / 2 + arr[i][1]
-            }
-            half_sum.sort(function(a, b) {
-                return a - b;
-            });
-            let half_cnt = 0;
-            for (let p = 0; p < half_sum.length; p++) {
-                if (m - half_sum[p] <= 0) {
-                    break;
+
+            answer = cnt;
+            let discnt = [];
+            if (cnt < n) {
+                for (let i = cnt; i < n; i++) {
+                    discnt.push(product[i][0] / 2 + product[i][1]);
                 }
-                m -= sum[p];
-                half_cnt += 1
+                discnt.sort(function(a, b) {
+                    return a - b;
+                });
+                for (let z of discnt) {
+                    if (m >= z) {
+                        m -= z;
+                        answer++;
+                        break;
+                    }
+                }
             }
-            answer = cnt + half_cnt;
             return answer;
         }
 
         let arr = [
             [6, 6],
             [2, 2],
-            [4, 3],
-            [4, 5],
-            [10, 3]
+            [10, 3],
+            [2, 5],
+            [2, 3],
+            [12, 3],
         ];
         console.log(solution(28, arr));
     </script>

@@ -10,7 +10,7 @@
 
 <body>
     <script>
-        let param0 = ["/a/a_v2.x", "/b/a.x", "/c/t.z", "/d/a/t.x", "/e/z/t_v1.z", "k/k/k/a_v9.x"]
+        let param0 = []
         let answer = [];
         let obj = new Map()
         let param0_clean = [];
@@ -18,6 +18,7 @@
         for (let x of param0) {
             param0_clean.push(x.split("/").reverse()[0][0] + "." + x.split("/").reverse()[0].split("").reverse()[0])
         }
+
         console.log(param0_clean)
     </script>
 

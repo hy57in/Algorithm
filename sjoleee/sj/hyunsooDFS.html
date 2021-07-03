@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function solution(n, m) {
+            let answer = false;
+            let graph = Array.from(Array(arr.length + 1), () => Array());
+            let ch = Array.from({
+                    length: arr.length + 1,
+                },
+                () => 0
+            );
+            for (let [a, b] of arr) {
+                graph[a].push(b);
+            }
+
+            function DFS(v) {
+                ch[n] = 1;
+                if (v == m) {
+                    answer = true;
+                } else {
+                    for (let i = 0; i < graph[v].length; i++) {
+                        if (ch[graph[v][i]] == 0) {
+                            ch[graph[v][i]] = 1;
+                            DFS(graph[v][i]);
+                            ch[graph[v][i]] = 0;
+                        }
+                    }
+                }
+            }
+            DFS(n);
+            return answer;
+        }
+        let arr = [
+            [0, 1],
+            [1, 0],
+            [1, 2],
+            [1, 3],
+            [2, 1],
+            [3, 1],
+            [3, 4],
+            [4, 3],
+            [5, 6],
+            [6, 5],
+        ];
+        let 상조 = 0;
+        let 현수 = 1;
+        let 미리 = 2;
+        let 재익 = 3;
+        let 용호 = 4;
+        let 지민 = 5;
+        let 영서 = 6;
+        console.log(solution(상조, 용호));
+    </script>
+</body>
+
+</html>

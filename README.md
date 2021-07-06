@@ -9,8 +9,8 @@
 ## 👩🏻‍💻 스터디원
 |이름|GitHub|
 |------|---|
-|김효진|[@hy57in](www.github.com/hy57in)|
-|이상조|[@sjoleee](www.github.com/sjoleee)|
+|김효진|[@hy57in](https://www.github.com/hy57in)|
+|이상조|[@sjoleee](https://www.github.com/sjoleee)|
 
 ## 🌳 규칙
 - 매일 최소 1문제씩 풀고 풀이 업로드

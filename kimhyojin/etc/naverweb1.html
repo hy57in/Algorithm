@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(k, rates) {
+        let answer = 0;
+        let dollar = 0;
+        let tmp = 0;
+
+        for (let x of rates) {
+          if (!dollar) {
+            //사야함
+            
+            if (x <= k) {
+              dollar = 1;
+              k = k - x;
+            }
+          } else if (dollar) {
+            //팔아야함
+            tmp = x - k;
+            if (x - k >= tmp) {
+              dollar = 0;
+              k = x + k;
+            }
+          }
+          console.log(x, dollar, k);
+        }
+        answer = k;
+        return answer;
+      }
+      console.log(
+        solution(1000, [
+          1200,
+          1000,
+          1100,
+          1200,
+          900,
+          1000,
+          1500,
+          900,
+          750,
+          1100,
+        ])
+      );
+    </script>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(board) {
+        let answer = 0;
+        let cnt = 0;
+        let n = board.length;
+        let dx = [-1, 0, 1, 0];
+        let dy = [0, 1, 0, -1];
+
+        function DFS(x, y) {
+          for (let i = 0; i < 4; i++) {
+            let nx = x + dx[i];
+            let ny = y + dy[i];
+
+            if (
+              nx >= 0 &&
+              nx <= 2 &&
+              ny >= 0 &&
+              ny <= 2 &&
+              board[nx][ny] === 0
+            ) {
+              board[nx][ny] = 1;
+              DFS(nx, ny);
+              board[nx][ny] = 0;
+            }
+
+            if (
+              nx >= 0 &&
+              nx <= 2 &&
+              ny >= 0 &&
+              ny <= 2 &&
+              board[nx][ny] === 2
+            ) {
+              board[nx][ny] = 1;
+              cnt++;
+              DFS(nx, ny);
+              board[nx][ny] = 2;
+            }
+          }
+        }
+
+        board[0][0] = 1;
+        DFS(0, 0);
+        return (answer = cnt);
+      }
+
+      let arr = [
+        [0, 1, 0],
+        [0, 1, 2],
+        [0, 0, 2],
+      ];
+
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>

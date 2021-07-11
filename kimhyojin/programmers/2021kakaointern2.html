@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(places) {
+        let answer = [];
+        let dx = [-1, 0, 1, 0];
+        let dy = [0, 1, 0, -1];
+
+        function DFS(r) {
+          if (r === 2) {
+            return answer;
+          } else {
+            DFS(r + 1);
+          }
+        }
+        DFS(1);
+
+        return answer;
+      }
+      let places = [
+        ["POOOP", "OXXOX", "OPXPX", "OOXOX", "POXXP"],
+        ["POOPX", "OXPXP", "PXXXO", "OXXXO", "OOOPP"],
+        ["PXOPX", "OXOXP", "OXPOX", "OXXOP", "PXPOX"],
+        ["OOOXX", "XOOOX", "OOOXX", "OXOOX", "OOOOO"],
+        ["PXPXP", "XPXPX", "PXPXP", "XPXPX", "PXPXP"],
+      ];
+      console.log(solution(places));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        var answer = "";
+        let num = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+        let str = [
+          "zero",
+          "one",
+          "two",
+          "three",
+          "four",
+          "five",
+          "six",
+          "seven",
+          "eight",
+          "nine",
+        ];
+
+        for (let i = 0; i < s.length; i++) {
+          if (num.includes(s[i])) {
+            answer += s[i];
+          } else {
+            if (s.slice(i).startsWith(str[0])) answer += "0";
+            if (s.slice(i).startsWith(str[1])) answer += "1";
+            if (s.slice(i).startsWith(str[2])) answer += "2";
+            if (s.slice(i).startsWith(str[3])) answer += "3";
+            if (s.slice(i).startsWith(str[4])) answer += "4";
+            if (s.slice(i).startsWith(str[5])) answer += "5";
+            if (s.slice(i).startsWith(str[6])) answer += "6";
+            if (s.slice(i).startsWith(str[7])) answer += "7";
+            if (s.slice(i).startsWith(str[8])) answer += "8";
+            if (s.slice(i).startsWith(str[9])) answer += "9";
+
+            answer += "";
+          }
+        }
+
+        return Number(answer);
+      }
+      let s = "234";
+      console.log(solution(s));
+    </script>
+  </body>
+</html>

@@ -9,6 +9,20 @@
         let answer;
         let stack = [];
 
+        for (let x of s) {
+          if (!isNaN(x)) {
+            stack.push(Number(x));
+          } else {
+            let b = stack.pop();
+            let a = stack.pop();
+            if (x === "-") stack.push(a - b);
+            if (x === "+") stack.push(a + b);
+            if (x === "*") stack.push(a * b);
+            if (x === "/") stack.push(a / b);
+          }
+        }
+
+        answer = stack[0];
         return answer;
       }
 

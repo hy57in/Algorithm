@@ -1,0 +1,52 @@
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+</head>
+
+<body>
+    <script>
+        function solution(line1, line2) {
+            let answer = 0;
+            let tmp = Array.from({
+                    length: line1.length,
+                },
+                () => ""
+            );
+            let cnt = 0;
+            let idx = 0;
+            for (
+                let m = 1; m <= (line1.length - line2.length) / (line2.length - 1) + 1; m++
+            ) {
+                for (let j = 0; j < line1.length; j++) {
+                    for (let k = 0; k < line1.length; k += m) {
+                        if (idx == line2.length) break;
+                        if (line1[j + k] == line2[idx]) {
+                            cnt++;
+                        }
+                        idx++;
+                    }
+                    if (cnt == line2.length) {
+                        answer++;
+                        cnt = 0;
+                        idx = 0;
+                        cnt2 = 0;
+                    } else {
+                        cnt = 0;
+                        idx = 0;
+                        cnt2 = 0;
+                    }
+                }
+            }
+
+            return answer;
+        }
+
+        let a = "abbbcbbb";
+        let b = "bbb";
+        console.log(solution(a, b));
+    </script>
+</body>
+
+</html>

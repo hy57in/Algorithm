@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pay2</title>
+  </head>
+  <body>
+    <script>
+      function solution(rows, columns, swipes) {
+        let answer = [];
+        let board = Array.from(Array(rows + 2), () =>
+          Array(columns + 2).fill(0)
+        );
+
+        for (let i = 1; i <= rows; i++) {
+          for (let j = 1; j <= columns; j++) {
+            board[i][j] = (i - 1) * columns + j;
+          }
+        }
+
+        for (let i = 0; i < swipes.length; i++) {
+          if (swipes[i][0] === 1) {
+            let sum = 0;
+            for (let j = swipes[i][3]; j >= swipes[i][1]; j--) {
+              for (let k = swipes[i][4]; k >= swipes[i][2]; k--) {
+                board[j + 1][k] = board[j][k];
+                if (j + 1 > swipes[i][3]) {
+                  sum += board[j + 1][k];
+                }
+              }
+            }
+            answer.push(sum);
+            for (let j = swipes[i][2]; j <= swipes[i][4]; j++) {
+              board[swipes[i][1]][j] = board[swipes[i][3] + 1][j];
+            }
+          }
+          if (swipes[i][0] === 3) {
+            let sum = 0;
+            for (let j = swipes[i][3]; j >= swipes[i][1]; j--) {
+              for (let k = swipes[i][4]; k >= swipes[i][2]; k--) {
+                board[j][k + 1] = board[j][k];
+                if (k + 1 > swipes[i][4]) {
+                  sum += board[j][k + 1];
+                }
+              }
+            }
+            answer.push(sum);
+            for (let j = swipes[i][1]; j <= swipes[i][3]; j++) {
+              board[j][swipes[i][2]] = board[j][swipes[i][4] + 1];
+            }
+          }
+          if (swipes[i][0] === 4) {
+            let sum = 0;
+            for (let j = swipes[i][1]; j <= swipes[i][3]; j++) {
+              for (let k = swipes[i][2]; k <= swipes[i][4]; k++) {
+                board[j][k - 1] = board[j][k];
+                if (k - 1 < swipes[i][2]) {
+                  sum += board[j][k - 1];
+                }
+              }
+            }
+            answer.push(sum);
+            for (let j = swipes[i][1]; j <= swipes[i][3]; j++) {
+              board[j][swipes[i][4]] = board[j][swipes[i][2] - 1];
+            }
+          }
+          if (swipes[i][0] === 2) {
+            let sum = 0;
+            for (let j = swipes[i][1]; j <= swipes[i][3]; j++) {
+              for (let k = swipes[i][2]; k <= swipes[i][4]; k++) {
+                board[j - 1][k] = board[j][k];
+                if (j - 1 < swipes[i][1]) {
+                  sum += board[j - 1][k];
+                }
+              }
+            }
+            answer.push(sum);
+            for (let j = swipes[i][2]; j <= swipes[i][4]; j++) {
+              board[swipes[i][3]][j] = board[swipes[i][1] - 1][j];
+            }
+          }
+        }
+
+        console.log(board);
+        console.log(answer);
+        return answer;
+      }
+
+      let s = "";
+      console.log(
+        solution(2, 2, [
+          [3, 1, 1, 1, 2],
+          [1, 1, 2, 2, 2],
+          [4, 2, 1, 2, 2],
+          [2, 1, 1, 2, 1],
+        ])
+      );
+    </script>
+  </body>
+</html>

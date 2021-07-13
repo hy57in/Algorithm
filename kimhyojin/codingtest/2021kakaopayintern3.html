@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pay3</title>
+  </head>
+  <body>
+    <script>
+      function solution(line1, line2) {
+        let answer = 0;
+        let tmp = Array.from(
+          {
+            length: line1.length,
+          },
+          () => ""
+        );
+        let cnt = 0;
+        let cnt2 = 0;
+        let idx = 0;
+        for (
+          let m = 1;
+          m <= (line1.length - line2.length + 1) / (line2.length - 1);
+          m++
+        ) {
+          for (let j = 0; j < line1.length; j++) {
+            for (let k = 0; k < line1.length; k += m) {
+              if (cnt2 == line2.length) break;
+              else if (line1[j + k] == line2[idx]) {
+                cnt++;
+              }
+              idx++;
+              cnt2++;
+            }
+            if (cnt == line2.length) {
+              answer++;
+              cnt = 0;
+              idx = 0;
+              cnt2 = 0;
+            } else {
+              cnt = 0;
+              idx = 0;
+              cnt2 = 0;
+            }
+          }
+          console.log(idx,cnt,cnt2,answer)
+        }
+
+        return answer;
+      }
+
+      let a = "abcabcabc";
+      let b = "abc";
+      console.log(solution(a, b));
+    </script>
+  </body>
+</html>

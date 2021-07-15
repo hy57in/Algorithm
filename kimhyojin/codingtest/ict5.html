@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ICT5</title>
+  </head>
+  <body>
+    <script>
+      function decode(codes, encoded) {
+        let answer = "";
+        let encoded_arr = [];
+        let map = new Map();
+        let idx = "";
+
+        for (let i = 0; i < codes.length; i++) {
+          let tmp = codes[i].split("\t");
+          map.set(tmp[1], tmp[0]);
+        }
+        for (let i = 0; i < encoded.length; i++) {
+          idx += encoded[i];
+          if (map.has(idx)) {
+            if (map.get(idx) === "[newline]") {
+              answer += "\n";
+            } else {
+              answer += map.get(idx);
+            }
+            idx = "";
+          }
+        }
+
+        return answer;
+      }
+      codes = ["a	100100", "b	100101", "[newline]	111111"];
+      encoded = "100100111111100101";
+
+      console.log(decode(codes, encoded));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function maxEvents(arrival, duration) {
+        let answer = 0;
+        let n = arrival.length;
+        let arr = [];
+
+        for (let i = 0; i < n; i++) {
+          let [start, end] = [arrival[i], arrival[i] + duration[i]];
+          arr.push([+start, +end]);
+        }
+
+        arr.sort((a, b) => {
+          if (a[1] === b[1]) return a[0] - b[0];
+          return a[1] - b[1];
+        });
+        console.log(arr);
+
+        let time = 0;
+
+        arr.forEach((e) => {
+          if (time <= e[0]) {
+            answer++;
+            time = e[1];
+          }
+          console.log(e[0], e[1]);
+        });
+
+        return answer;
+      }
+      let arrival = [1, 3, 5];
+      let duration = [2, 2, 2];
+      console.log(maxEvents(arrival, duration));
+    </script>
+  </body>
+</html>

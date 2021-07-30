@@ -1,7 +1,7 @@
-n = int(input())
+t = int(input())
 
-for i in range(n):
+for i in range(t):
     h, w, n = map(int, input().split())
     a = (n-1)%h+1
     b = (n-1)/h+1
-    print(a*100+b)
+    print(int(a*100+b))
